@@ -56,7 +56,8 @@
     "no-param-reassign": "off",
     "no-shadow": "off",
     "no-plusplus": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   },
   "settings": {
     "import/resolver": {
