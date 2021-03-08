@@ -17,7 +17,7 @@ import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
 import useStyles from './style';
-import { OpenWeatherOneCall } from '../../core/interfaces/open-weather-one-call';
+import { OpenWeatherOneCall } from '../../core/interfaces';
 import { getOneCallForecast } from '../../core/providers/open-weather';
 import { useOpenWeatherOneCall } from '../../core/fetchers/open-weather-fetcher';
 

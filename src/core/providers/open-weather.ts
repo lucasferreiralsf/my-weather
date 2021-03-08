@@ -1,6 +1,9 @@
 import openWeatherApi from '../api';
-import { OpenWeatherCurrentByCity } from '../interfaces/open-weather-current-by-city';
-import { OpenWeatherOneCall } from '../interfaces/open-weather-one-call';
+import {
+  OpenWeatherCityByLatLon,
+  OpenWeatherCurrentByCity,
+  OpenWeatherOneCall,
+} from '../interfaces';
 
 const getOneCallForecast = async (
   _ = '',

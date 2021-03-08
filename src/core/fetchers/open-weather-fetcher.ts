@@ -1,6 +1,5 @@
 import useSWR from 'swr';
-import { OpenWeatherCurrentByCity } from '../interfaces/open-weather-current-by-city';
-import { OpenWeatherOneCall } from '../interfaces/open-weather-one-call';
+import { OpenWeatherCurrentByCity, OpenWeatherOneCall } from '../interfaces';
 import {
   getOneCallForecast,
   getCurrentByCity,
