@@ -1,10 +1,22 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
+import { GetStaticProps } from 'next';
 
 import useStyles from './styles';
 import MyCity from '../components/my-city';
 
-export default function Home(): JSX.Element {
+import {
+  OpenWeatherOneCall,
+  OpenWeatherCityByLatLon,
+} from '../core/interfaces';
+
+export default function Home({
+  initialCity,
+  oneCallInitialData,
+}: {
+  initialCity: OpenWeatherCityByLatLon;
+  oneCallInitialData: OpenWeatherOneCall;
+}): JSX.Element {
   const classes = useStyles();
 
   return (
@@ -19,7 +31,10 @@ export default function Home(): JSX.Element {
         justify="center"
         alignItems="center"
       >
-        <MyCity />
+        <MyCity
+          initialCity={initialCity}
+          oneCallInitialData={oneCallInitialData}
+        />
       </Grid>
     </Grid>
   );

@@ -12,44 +12,55 @@ import {
   YAxis,
   ResponsiveContainer,
 } from 'recharts';
-import { GetStaticProps } from 'next';
+import { Skeleton } from '@material-ui/lab';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
 import useStyles from './style';
-import { OpenWeatherOneCall } from '../../core/interfaces';
-import { getOneCallForecast } from '../../core/providers/open-weather';
-import { useOpenWeatherOneCall } from '../../core/fetchers/open-weather-fetcher';
+import {
+  OpenWeatherCityByLatLon,
+  OpenWeatherOneCall,
+} from '../../core/interfaces';
 
-export const getStaticProps: GetStaticProps = async () => {
-  const initialData = await getOneCallForecast();
-  return {
-    props: { initialData },
-  };
-};
+import {
+  useOpenWeatherCityByLatLon,
+  useOpenWeatherOneCall,
+} from '../../core/fetchers/open-weather-fetcher';
 
 export type MyCity = {
-  initialData?: OpenWeatherOneCall;
+  oneCallInitialData?: OpenWeatherOneCall;
+  initialCity?: OpenWeatherCityByLatLon;
 };
 
-const MyCity = ({ initialData }: MyCity) => {
+const MyCity = ({ oneCallInitialData, initialCity }: MyCity) => {
   const classes = useStyles();
 
   const [coords, setCoords] = useState<{ lat: number; lon: number }>();
-  const { data } = useOpenWeatherOneCall(coords?.lat, coords?.lon, initialData);
+  const {
+    data: weatherData,
+    loading: weatherLoading,
+    mutate: mutateWeather,
+  } = useOpenWeatherOneCall(coords?.lat, coords?.lon, oneCallInitialData);
+  const {
+    data: cityData,
+    loading: cityLoading,
+    mutate: mutateCity,
+  } = useOpenWeatherCityByLatLon(coords?.lat, coords?.lon, initialCity);
 
   useEffect(() => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(
-        async (position: GeolocationPosition) => {
+        (position: GeolocationPosition) => {
           setCoords({
             lat: position.coords.latitude,
             lon: position.coords.longitude,
           });
+          mutateWeather();
+          mutateCity();
         }
       );
     }
-  }, []);
+  });
 
   return (
     <Grid
@@ -60,9 +71,9 @@ const MyCity = ({ initialData }: MyCity) => {
     >
       <Grid item style={{ margin: '100px 0' }}>
         <Grid container item justify="center" alignItems="center">
-          {data && (
+          {weatherData && (
             <img
-              src={`http://openweathermap.org/img/wn/${data?.current.weather[0].icon}@2x.png`}
+              src={`http://openweathermap.org/img/wn/${weatherData?.current.weather[0].icon}@2x.png`}
               alt="weather icon"
             />
           )}
@@ -81,20 +92,40 @@ const MyCity = ({ initialData }: MyCity) => {
           direction="column"
           style={{ margin: '40px 0' }}
         >
-          <Typography variant="h2">{data?.current.temp} &deg;C</Typography>
-          <Typography>São Paulo, MG</Typography>
+          <Typography variant="h2">
+            {weatherLoading ? <Skeleton /> : `${weatherData?.current.temp} °C`}
+          </Typography>
+          <Typography>
+            {cityLoading ? (
+              <Skeleton />
+            ) : (
+              `${cityData?.name}, ${cityData?.country}`
+            )}
+          </Typography>
         </Grid>
         <Grid container justify="center" alignItems="center">
-          <Typography>Sensação de {data?.current.feels_like} &deg;C</Typography>
+          <Typography>
+            {weatherLoading ? (
+              <Skeleton />
+            ) : (
+              `Sensação de ${weatherData?.current.feels_like} °C`
+            )}
+          </Typography>
           <div className={classes.circleSeparator} />
           <Typography>
-            Pôr do sol às{' '}
-            {data?.current?.sunset &&
-              format(data.current.sunset * 1000, 'HH:mm')}
+            {weatherLoading ? (
+              <Skeleton />
+            ) : (
+              `Pôr do sol às${' '}
+            ${
+              weatherData?.current?.sunset &&
+              format(weatherData.current.sunset * 1000, 'HH:mm')
+            }`
+            )}
           </Typography>
         </Grid>
       </Grid>
-      {data && (
+      {weatherData && (
         <Grid container item justify="center">
           <Grid item xs={10}>
             <Typography style={{ padding: '30px 0' }}>
@@ -102,9 +133,9 @@ const MyCity = ({ initialData }: MyCity) => {
             </Typography>
             <ResponsiveContainer width="95%" height={150}>
               <BarChart
-                data={data?.hourly.slice(
-                  data.hourly.length - 5,
-                  data.hourly.length
+                data={weatherData?.hourly.slice(
+                  weatherData.hourly.length - 5,
+                  weatherData.hourly.length
                 )}
               >
                 <XAxis
