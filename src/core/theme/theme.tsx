@@ -32,11 +32,11 @@ const theme = createMuiTheme({
     primary: {
       light: '#94C8E5', // will be calculated from palette.primary.main
       main: '#364265',
-      dark: '#092740',
+      dark: '#100e3a',
       contrastText: '#F2F2F2',
     },
     secondary: {
-      main: '#6FCF97',
+      main: '#ef4123',
       contrastText: '#fff',
     },
     text: {
@@ -53,7 +53,7 @@ const theme = createMuiTheme({
       main: '#89B832',
     },
     background: {
-      default: '#EDF4F6',
+      default: '#f2fbff',
     },
     action: {
       hover: '#F9F9FC',
@@ -93,7 +93,7 @@ export const darkTheme = createMuiTheme({
       contrastText: '#F2F2F2',
     },
     secondary: {
-      main: '#6FCF97',
+      main: '#ef4123',
       contrastText: '#fff',
     },
     text: {

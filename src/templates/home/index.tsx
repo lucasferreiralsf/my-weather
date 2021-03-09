@@ -1,30 +1,22 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import { GetStaticProps } from 'next';
+
+import { OpenWeatherCityByLatLon, OpenWeatherOneCall } from '@core/interfaces';
+import MyCity from '@organisms/my-city';
 
 import useStyles from './styles';
-import MyCity from '../components/my-city';
 
-import {
-  OpenWeatherOneCall,
-  OpenWeatherCityByLatLon,
-} from '../core/interfaces';
-import OtherCities from '../components/other-cities';
+type HomeProps = {
+  initialCity?: OpenWeatherCityByLatLon;
+  oneCallInitialData?: OpenWeatherOneCall;
+};
 
-export default function Home({
-  initialCity,
-  oneCallInitialData,
-}: {
-  initialCity: OpenWeatherCityByLatLon;
-  oneCallInitialData: OpenWeatherOneCall;
-}): JSX.Element {
+function Home({ initialCity, oneCallInitialData }: HomeProps) {
   const classes = useStyles();
 
   return (
     <Grid container className={classes.root}>
-      <Grid item xs={12} md={8} className={classes.leftSide}>
-        <OtherCities />
-      </Grid>
+      <Grid item xs={12} md={8} className={classes.leftSide} />
       <Grid
         container
         item
@@ -42,3 +34,5 @@ export default function Home({
     </Grid>
   );
 }
+
+export default Home;

@@ -4,7 +4,7 @@ import { AppProps } from 'next/app';
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
 import Head from 'next/head';
 
-import theme from '../core/theme/theme';
+import theme from '@core/theme/theme';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   React.useEffect(() => {

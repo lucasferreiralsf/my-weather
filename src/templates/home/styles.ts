@@ -6,9 +6,6 @@ const useStyles = makeStyles((theme: Theme) =>
       height: '100vh',
       width: '100%',
       margin: 0,
-      [theme.breakpoints.down(960)]: {
-        flexDirection: 'row-reverse',
-      },
     },
     rightSide: {
       background: theme.palette.primary.dark,
@@ -19,6 +16,10 @@ const useStyles = makeStyles((theme: Theme) =>
     leftSide: {
       [theme.breakpoints.down(960)]: {
         order: 2,
+      },
+      [theme.breakpoints.up(960)]: {
+        overflowY: 'auto',
+        height: '100vh',
       },
     },
   })
