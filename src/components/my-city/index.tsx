@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Hidden, Typography } from '@material-ui/core';
 import { IoCloudySharp } from 'react-icons/io5';
 import { RiCloudFill } from 'react-icons/ri';
 import { FaCloud } from 'react-icons/fa';
@@ -16,7 +16,7 @@ import { Skeleton } from '@material-ui/lab';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
-import useStyles from './style';
+import useStyles from './styles';
 import {
   OpenWeatherCityByLatLon,
   OpenWeatherOneCall,
@@ -68,51 +68,53 @@ const MyCity = ({ oneCallInitialData, initialCity }: MyCity) => {
       alignItems="center"
       justify="center"
       className={classes.root}
+      spacing={4}
     >
-      <Grid item style={{ margin: '100px 0' }}>
-        <Grid container item justify="center" alignItems="center">
-          {weatherData && (
-            <img
-              src={`http://openweathermap.org/img/wn/${weatherData?.current.weather[0].icon}@2x.png`}
-              alt="weather icon"
-            />
+      <Grid container item justify="center" alignItems="center" xs={12}>
+        {weatherData && (
+          <img
+            src={`http://openweathermap.org/img/wn/${weatherData?.current.weather[0].icon}@2x.png`}
+            alt="weather icon"
+          />
+        )}
+        <Grid item>
+          <Typography variant="h4">Hoje</Typography>
+          <Typography>
+            {format(Date.now(), 'd LLL, EEE', { locale: ptBR })}
+          </Typography>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        item
+        justify="center"
+        alignItems="center"
+        direction="column"
+      >
+        <Typography variant="h2">
+          {weatherLoading ? <Skeleton /> : `${weatherData?.current.temp} °C`}
+        </Typography>
+        <Typography>
+          {cityLoading ? (
+            <Skeleton />
+          ) : (
+            `${cityData?.name}, ${cityData?.country}`
           )}
-          <Grid item>
-            <Typography variant="h4">Hoje</Typography>
-            <Typography>
-              {format(Date.now(), 'd LLL, EEE', { locale: ptBR })}
-            </Typography>
-          </Grid>
-        </Grid>
-        <Grid
-          container
-          item
-          justify="center"
-          alignItems="center"
-          direction="column"
-          style={{ margin: '40px 0' }}
-        >
-          <Typography variant="h2">
-            {weatherLoading ? <Skeleton /> : `${weatherData?.current.temp} °C`}
-          </Typography>
-          <Typography>
-            {cityLoading ? (
-              <Skeleton />
-            ) : (
-              `${cityData?.name}, ${cityData?.country}`
-            )}
-          </Typography>
-        </Grid>
-        <Grid container justify="center" alignItems="center">
-          <Typography>
+        </Typography>
+      </Grid>
+      <Grid container item justify="center" alignItems="center" xs={12}>
+        <Grid item lg={5}>
+          <Typography align="center">
             {weatherLoading ? (
-              <Skeleton />
+              <Skeleton width={100} />
             ) : (
               `Sensação de ${weatherData?.current.feels_like} °C`
             )}
           </Typography>
-          <div className={classes.circleSeparator} />
-          <Typography>
+        </Grid>
+        <Grid item className={classes.circleSeparator} />
+        <Grid item lg={5}>
+          <Typography align="center">
             {weatherLoading ? (
               <Skeleton />
             ) : (
@@ -126,7 +128,7 @@ const MyCity = ({ oneCallInitialData, initialCity }: MyCity) => {
         </Grid>
       </Grid>
       {weatherData && (
-        <Grid container item justify="center">
+        <Grid container item justify="center" alignItems="center">
           <Grid item xs={10}>
             <Typography style={{ padding: '30px 0' }}>
               Chance de chuva

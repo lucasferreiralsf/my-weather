@@ -4,7 +4,13 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       color: 'white',
-      maxHeight: '90vh',
+      width: '100%',
+      [theme.breakpoints.down(960)]: {
+        height: '110vh',
+      },
+      [theme.breakpoints.up(960)]: {
+        maxHeight: '90vh',
+      },
     },
     weatherIcon: {
       fontSize: '3.4em',
@@ -28,22 +34,19 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     cloudsLeft: {
-      position: 'relative',
-      bottom: '700px',
+      marginTop: '-900px',
       opacity: 0.06,
       zIndex: 0,
       fontSize: '6px',
     },
     cloudsRight1: {
-      position: 'relative',
-      bottom: '800px',
+      marginTop: '-700px',
       opacity: 0.03,
       zIndex: 0,
       fontSize: '8px',
     },
     cloudsRight2: {
-      position: 'relative',
-      bottom: '1500px',
+      marginTop: '-1150px',
       opacity: 0.04,
       zIndex: 0,
       fontSize: '4px',

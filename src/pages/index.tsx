@@ -9,6 +9,7 @@ import {
   OpenWeatherOneCall,
   OpenWeatherCityByLatLon,
 } from '../core/interfaces';
+import OtherCities from '../components/other-cities';
 
 export default function Home({
   initialCity,
@@ -21,7 +22,9 @@ export default function Home({
 
   return (
     <Grid container className={classes.root}>
-      <Grid item xs={12} md={8} />
+      <Grid item xs={12} md={8} className={classes.leftSide}>
+        <OtherCities />
+      </Grid>
       <Grid
         container
         item
