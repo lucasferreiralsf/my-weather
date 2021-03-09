@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Hidden, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { IoCloudySharp } from 'react-icons/io5';
 import { RiCloudFill } from 'react-icons/ri';
 import { FaCloud } from 'react-icons/fa';
