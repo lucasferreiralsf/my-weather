@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, useTheme } from '@material-ui/core';
 import { IoCloudySharp } from 'react-icons/io5';
 import { RiCloudFill } from 'react-icons/ri';
 import { FaCloud } from 'react-icons/fa';
@@ -34,6 +34,7 @@ export type MyCity = {
 
 const MyCity = ({ oneCallInitialData, initialCity }: MyCity) => {
   const classes = useStyles();
+  const theme = useTheme();
 
   const [coords, setCoords] = useState<{ lat: number; lon: number }>();
   const {
@@ -155,7 +156,22 @@ const MyCity = ({ oneCallInitialData, initialCity }: MyCity) => {
                   tickFormatter={(value) => `${value}%`}
                 />
 
-                <Tooltip />
+                <Tooltip
+                  labelFormatter={() => ''}
+                  contentStyle={{
+                    background: theme.palette.background.paper,
+                    borderRadius: '12px',
+                    border: 'none',
+                  }}
+                  cursor={{
+                    fill: 'transparent',
+                  }}
+                  wrapperStyle={{ zIndex: 2 }}
+                  formatter={(value: number, name: string) => [
+                    ` ${value}%`,
+                    'Humidade',
+                  ]}
+                />
                 <CartesianGrid
                   horizontal={false}
                   stroke="#ccc"
