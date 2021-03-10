@@ -23,6 +23,7 @@ import {
   useOpenWeatherCityByLatLon,
   useOpenWeatherOneCall,
 } from '@core/fetchers/open-weather-fetcher';
+import environments from '@core/api/environments';
 
 import useStyles from './styles';
 
@@ -97,7 +98,7 @@ const MyCity = ({ oneCallInitialData, initialCity }: MyCityProps) => {
       >
         {weatherData && (
           <img
-            src={`http://openweathermap.org/img/wn/${weatherData?.current.weather[0].icon}@2x.png`}
+            src={`${environments.openWeatherIconsBaseUrl}/${weatherData?.current.weather[0].icon}@2x.png`}
             alt="weather icon"
           />
         )}
