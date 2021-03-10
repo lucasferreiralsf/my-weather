@@ -16,6 +16,8 @@ import { motion } from 'framer-motion';
 
 import { bottomToTopVariant } from '@core/animations/default-animations';
 import { Daily } from '@core/interfaces/open-weather-one-call';
+import environments from '@core/api/environments';
+
 import useStyles from './styles';
 
 const WeatherDailyListItem = ({
@@ -64,7 +66,7 @@ const WeatherDailyListItem = ({
             <Skeleton />
           ) : (
             <img
-              src={`http://openweathermap.org/img/wn/02d.png`}
+              src={`${environments.openWeatherIconsBaseUrl}/${data?.weather[0].icon}.png`}
               alt="weather icon"
             />
           )}

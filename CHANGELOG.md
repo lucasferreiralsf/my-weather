@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/lucasferreiralsf/my-weather/compare/v1.0.0...v1.0.1) (2021-03-10)
+
+
+### Bug Fixes
+
+* fix images links errors ([e334761](https://github.com/lucasferreiralsf/my-weather/commit/e334761e7b166bda6e672ef37ef23b5210c36e8c))
+
 # 1.0.0 (2021-03-10)
 
 
