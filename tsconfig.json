@@ -16,7 +16,16 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
+    "baseUrl": ".",
+    "paths": {
+      "@core/*": ["src/core/*"],
+      "@atoms/*": ["src/atoms/*"],
+      "@molecules/*": ["src/molecules/*"],
+      "@organisms/*": ["src/organisms/*"],
+      "@templates/*": ["src/templates/*"],
+      "@pages/*": ["src/pages/*"],
+    }
   },
   "exclude": ["node_modules"],
   "include": ["**/*.ts", "**/*.tsx"]
