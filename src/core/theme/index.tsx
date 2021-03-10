@@ -31,7 +31,7 @@ const fonts = [
 const ThemeContext = createContext({
   prefersDarkMode: false,
   /* eslint-disable @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars */
-  toggleDarkMode: (isDarkMode: boolean) => {},
+  toggleDarkMode: (_isDarkMode: boolean) => {},
 });
 
 const lightTheme = createMuiTheme({

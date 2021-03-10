@@ -25,7 +25,7 @@ const WeatherDailyList = ({
         {loading ? (
           Array(5)
             .fill(5)
-            .map((item, i) => (
+            .map((_item, i) => (
               <WeatherDailyListItem
                 /* eslint-disable */
                 key={i}
