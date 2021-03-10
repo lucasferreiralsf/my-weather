@@ -105,6 +105,7 @@ const darkTheme = createMuiTheme({
     text: {
       primary: '#F0F2FF',
       secondary: '#F0F2FF',
+      hint: '#F0F2FF',
     },
     error: {
       main: '#F0614B',

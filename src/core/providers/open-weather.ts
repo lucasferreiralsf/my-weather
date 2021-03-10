@@ -1,4 +1,4 @@
-import openWeatherApi from '../api';
+import { openWeatherApi } from '../api';
 import {
   OpenWeatherCityByLatLon,
   OpenWeatherCurrentByCity,

@@ -60,7 +60,7 @@ const MyCity = ({ oneCallInitialData, initialCity }: MyCityProps) => {
         }
       );
     }
-  });
+  }, []);
 
   return (
     <Grid

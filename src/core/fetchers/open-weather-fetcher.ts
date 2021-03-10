@@ -17,7 +17,7 @@ function useOpenWeatherOneCall(
   initialData?: any
 ): { loading: boolean; data?: OpenWeatherOneCall; mutate: any } {
   const { data, mutate, error } = useSWR<OpenWeatherOneCall>(
-    ['useOpenWeatherOneCall', lat, lon],
+    lat && lon ? ['useOpenWeatherOneCall', lat, lon] : null,
     getOneCallForecast,
     { initialData }
   );

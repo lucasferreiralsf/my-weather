@@ -24,4 +24,15 @@ openWeatherApi.geo.interceptors.request.use(async (config) => {
   return config;
 });
 
-export default openWeatherApi;
+const placesApi = axios.create({
+  baseURL: environments.googlePlacesApiBaseUrl,
+  headers: { 'Content-Type': 'application/json' },
+});
+
+placesApi.interceptors.request.use(async (config) => {
+  const urlWithAppId = `${config.url}&key=${environments.googlePlacesApiKey}`;
+  config.url = urlWithAppId;
+  return config;
+});
+
+export { openWeatherApi, placesApi };

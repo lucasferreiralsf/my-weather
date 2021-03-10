@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 
 import { OpenWeatherCityByLatLon, OpenWeatherOneCall } from '@core/interfaces';
+import OtherCities from '@organisms/other-cities';
 import MyCity from '@organisms/my-city';
 
 import useStyles from './styles';
@@ -16,7 +17,9 @@ function Home({ initialCity, oneCallInitialData }: HomeProps) {
 
   return (
     <Grid container className={classes.root}>
-      <Grid item xs={12} md={8} className={classes.leftSide} />
+      <Grid item xs={12} md={8} className={classes.leftSide}>
+        <OtherCities />
+      </Grid>
       <Grid
         container
         item
