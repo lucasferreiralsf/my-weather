@@ -204,10 +204,7 @@ const MyCity = ({ oneCallInitialData, initialCity }: MyCityProps) => {
                     fill: 'transparent',
                   }}
                   wrapperStyle={{ zIndex: 2 }}
-                  formatter={(value: number, name: string) => [
-                    ` ${value}%`,
-                    'Humidade',
-                  ]}
+                  formatter={(value: number) => [` ${value}%`, 'Humidade']}
                 />
                 <CartesianGrid
                   horizontal={false}

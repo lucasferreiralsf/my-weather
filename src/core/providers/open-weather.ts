@@ -5,6 +5,7 @@ import {
   OpenWeatherOneCall,
 } from '../interfaces';
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const getOneCallForecast = async (
   _ = '',
   lat = -18.9113,
@@ -16,6 +17,7 @@ const getOneCallForecast = async (
   return res.data;
 };
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const getCurrentByCity = async (
   _ = '',
   city = 'Uberlândia'
@@ -26,6 +28,7 @@ const getCurrentByCity = async (
   return res.data;
 };
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const getCityByLatLon = async (
   _ = '',
   lat = -18.9113,
