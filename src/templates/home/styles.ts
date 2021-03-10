@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: 0,
     },
     rightSide: {
-      background: theme.palette.primary.dark,
+      background: theme.palette.primary.main,
       [theme.breakpoints.down(960)]: {
         order: 1,
       },

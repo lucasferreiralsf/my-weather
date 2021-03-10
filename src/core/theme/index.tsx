@@ -1,4 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
+import { createContext } from 'react';
 
 const fonts = [
   {
@@ -27,33 +28,39 @@ const fonts = [
   },
 ];
 
-const theme = createMuiTheme({
+const ThemeContext = createContext({
+  prefersDarkMode: false,
+  /* eslint-disable @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars */
+  toggleDarkMode: (isDarkMode: boolean) => {},
+});
+
+const lightTheme = createMuiTheme({
   palette: {
     primary: {
-      light: '#94C8E5', // will be calculated from palette.primary.main
-      main: '#364265',
-      dark: '#100e3a',
-      contrastText: '#F2F2F2',
+      light: '#A6B5FF',
+      main: '#4862E6',
+      dark: '#283680',
     },
     secondary: {
-      main: '#ef4123',
-      contrastText: '#fff',
+      light: '#FF8C66',
+      main: '#E66F47',
+      dark: '#FF8C66',
     },
     text: {
-      primary: '#424242',
-      secondary: '#99A1B4',
+      primary: '#353B57',
+      secondary: '#F0F2FF',
     },
     error: {
-      main: '#D83B3B',
+      main: '#F0614B',
     },
     warning: {
-      main: '#E8B100',
+      main: '#E5D85C',
     },
     success: {
-      main: '#89B832',
+      main: '#47E672',
     },
     background: {
-      default: '#f2fbff',
+      default: '#EBEEFF',
     },
     action: {
       hover: '#F9F9FC',
@@ -83,38 +90,36 @@ const theme = createMuiTheme({
   },
 });
 
-export const darkTheme = createMuiTheme({
+const darkTheme = createMuiTheme({
   palette: {
-    type: 'dark',
     primary: {
-      light: '#092740', // will be calculated from palette.primary.main
-      main: '#364265',
-      dark: '#0E2233',
-      contrastText: '#F2F2F2',
+      light: '#4BD6F2',
+      main: '#212d69',
+      dark: '#4862E6',
     },
     secondary: {
-      main: '#ef4123',
-      contrastText: '#fff',
+      light: '#FF8C66',
+      main: '#E66F47',
+      dark: '#CC532B',
     },
     text: {
-      primary: '#fff',
-      secondary: '#99A1B4',
+      primary: '#F0F2FF',
+      secondary: '#F0F2FF',
     },
     error: {
-      main: '#D83B3B',
+      main: '#F0614B',
     },
     warning: {
-      main: '#E8B100',
+      main: '#E5D85C',
     },
     success: {
-      main: '#89B832',
+      main: '#47E672',
     },
     background: {
-      default: '#092740',
-      paper: '#061A2B',
+      default: '#12183a',
     },
     action: {
-      hover: '#092740',
+      hover: '#F9F9FC',
     },
   },
   typography: {
@@ -141,4 +146,4 @@ export const darkTheme = createMuiTheme({
   },
 });
 
-export default theme;
+export { lightTheme, darkTheme, ThemeContext };

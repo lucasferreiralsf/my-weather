@@ -3,13 +3,13 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      color: 'white',
+      color: theme.palette.text.secondary,
       width: '100%',
       [theme.breakpoints.down(960)]: {
         height: '110vh',
       },
       [theme.breakpoints.up(960)]: {
-        maxHeight: '90vh',
+        height: '98vh',
       },
     },
     weatherIcon: {
@@ -50,6 +50,12 @@ const useStyles = makeStyles((theme: Theme) =>
       opacity: 0.04,
       zIndex: 0,
       fontSize: '4px',
+    },
+    zindex: {
+      zIndex: 1,
+    },
+    toggleDarkMode: {
+      zIndex: 1,
     },
   })
 );
