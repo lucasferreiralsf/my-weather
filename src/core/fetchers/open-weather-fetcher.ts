@@ -52,7 +52,7 @@ function useOpenWeatherCityByLatLon(
   initialData?: any
 ): { loading: boolean; data?: OpenWeatherCityByLatLon; mutate: any } {
   const { data, mutate, error } = useSWR<OpenWeatherCityByLatLon>(
-    ['useOpenWeatherCityByLatLon', lat, lon],
+    lat && lon ? ['useOpenWeatherCityByLatLon', lat, lon] : null,
     getCityByLatLon,
     { initialData }
   );

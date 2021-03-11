@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from '@templates/home';
 import { SWRConfig } from 'swr';
+import { SnackbarProvider } from 'notistack';
 
 export default function Index(): JSX.Element {
   return (
@@ -9,7 +10,9 @@ export default function Index(): JSX.Element {
         revalidateOnFocus: true,
       }}
     >
-      <Home />
+      <SnackbarProvider>
+        <Home />
+      </SnackbarProvider>
     </SWRConfig>
   );
 }

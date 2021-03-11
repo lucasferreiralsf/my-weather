@@ -33,6 +33,7 @@ const DarkModeToggle = (props: DarkModeToggleProps): JSX.Element => {
       fill="none"
       viewBox="0 0 60 30"
       style={{ cursor: 'pointer' }}
+      data-tour="step5"
     >
       <motion.rect
         width="60"

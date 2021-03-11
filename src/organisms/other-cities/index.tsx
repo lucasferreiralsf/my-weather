@@ -50,6 +50,7 @@ const OtherCities = () => {
             padding: '40px 32px 40px 32px',
             marginTop: '-20px',
           }}
+          data-tour="step2"
         >
           <CitiesList
             data={INITIAL_PLACES}
@@ -57,7 +58,7 @@ const OtherCities = () => {
             selectedCity={selectedCity}
           />
         </Grid>
-        <Grid container item spacing={4}>
+        <Grid container item spacing={4} data-tour="step3">
           <Grid item xs={12}>
             <StyledTabs
               value={selectedTab}
