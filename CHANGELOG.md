@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/lucasferreiralsf/my-weather/compare/v1.0.1...v1.1.0) (2021-03-11)
+
+
+### Features
+
+* added a tutorial tour and notification ([edcdf61](https://github.com/lucasferreiralsf/my-weather/commit/edcdf61e3356416342c333fa9719333115cfbdb7))
+
 ## [1.0.1](https://github.com/lucasferreiralsf/my-weather/compare/v1.0.0...v1.0.1) (2021-03-10)
 
 
