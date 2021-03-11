@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/lucasferreiralsf/my-weather/compare/v1.1.0...v1.1.1) (2021-03-11)
+
+
+### Bug Fixes
+
+* **fonts:** fix font path ([b229fbc](https://github.com/lucasferreiralsf/my-weather/commit/b229fbc78c5abb27098e09daf6ce7494d57f491f))
+
 # [1.1.0](https://github.com/lucasferreiralsf/my-weather/compare/v1.0.1...v1.1.0) (2021-03-11)
 
 
