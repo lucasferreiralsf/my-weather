@@ -6,25 +6,25 @@ const fonts = [
     fontFamily: 'Poppins',
     fontDisplay: 'swap',
     fontWeight: 300,
-    src: `local('Poppins-Light'), url('/fonts/Poppins-Light') format('truetype')`,
+    src: `local('Poppins-Light'), url('fonts/Poppins-Light.ttf') format('truetype')`,
   },
   {
     fontFamily: 'Poppins',
     fontDisplay: 'swap',
     fontWeight: 400,
-    src: `local('Poppins'), local('Poppins-Regular'), url('/fonts/Poppins-Regular') format('truetype')`,
+    src: `local('Poppins'), local('Poppins-Regular'), url('fonts/Poppins-Regular.ttf') format('truetype')`,
   },
   {
     fontFamily: 'Poppins',
     fontDisplay: 'swap',
     fontWeight: 500,
-    src: `local('Poppins-Medium'), url('/fonts/Poppins-Medium') format('truetype')`,
+    src: `local('Poppins-Medium'), url('fonts/Poppins-Medium.ttf') format('truetype')`,
   },
   {
     fontFamily: 'Poppins',
     fontDisplay: 'swap',
     fontWeight: 700,
-    src: `local('Poppins-Bold'), url('/fonts/Poppins-Bold') format('truetype')`,
+    src: `local('Poppins-Bold'), url('fonts/Poppins-Bold.ttf') format('truetype')`,
   },
 ];
 
