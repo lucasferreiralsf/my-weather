@@ -1,4 +1,9 @@
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import {
+  createStyles,
+  darken,
+  makeStyles,
+  Theme,
+} from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,6 +25,26 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.up(960)]: {
         overflowY: 'auto',
         height: '100vh',
+      },
+    },
+    reactourMask: {
+      color: darken(theme.palette.primary.dark, 0.5),
+      opacity: 0.6,
+    },
+    reactourHelper: {
+      color:
+        theme.palette.type === 'dark'
+          ? `${theme.palette.text.secondary} !important`
+          : `${theme.palette.text.secondary} !important`,
+      backgroundColor:
+        theme.palette.type === 'dark'
+          ? `${theme.palette.primary.dark} !important`
+          : `${theme.palette.primary.main} !important`,
+      '& button.reactour__close, [data-tour-elem="right-arrow"], [data-tour-elem="left-arrow"]': {
+        color: theme.palette.text.secondary,
+        '&:hover': {
+          color: theme.palette.secondary.main,
+        },
       },
     },
   })

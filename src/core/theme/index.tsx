@@ -36,6 +36,7 @@ const ThemeContext = createContext({
 
 const lightTheme = createMuiTheme({
   palette: {
+    type: 'light',
     primary: {
       light: '#A6B5FF',
       main: '#4862E6',
@@ -92,6 +93,7 @@ const lightTheme = createMuiTheme({
 
 const darkTheme = createMuiTheme({
   palette: {
+    type: 'dark',
     primary: {
       light: '#4BD6F2',
       main: '#212d69',
@@ -118,6 +120,7 @@ const darkTheme = createMuiTheme({
     },
     background: {
       default: '#12183a',
+      paper: 'white',
     },
     action: {
       hover: '#F9F9FC',

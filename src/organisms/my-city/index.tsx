@@ -15,6 +15,7 @@ import {
 import { Skeleton } from '@material-ui/lab';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { useSnackbar } from 'notistack';
 
 import DarkModeToggle from '@atoms/DarkModeToggle';
 import { ThemeContext } from '@core/theme';
@@ -36,6 +37,8 @@ const MyCity = ({ oneCallInitialData, initialCity }: MyCityProps) => {
   const classes = useStyles();
   const theme = useTheme();
 
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
   const [coords, setCoords] = useState<{ lat: number; lon: number }>();
   const {
     data: weatherData,
@@ -48,18 +51,37 @@ const MyCity = ({ oneCallInitialData, initialCity }: MyCityProps) => {
     mutate: mutateCity,
   } = useOpenWeatherCityByLatLon(coords?.lat, coords?.lon, initialCity);
 
+  const getLocation = () => {
+    navigator.geolocation.getCurrentPosition(
+      (position: GeolocationPosition) => {
+        closeSnackbar('location-denied');
+        setCoords({
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+        });
+        mutateWeather();
+        mutateCity();
+      },
+      locationDenied
+    );
+  };
+
+  const locationDenied = () => {
+    enqueueSnackbar(
+      'Você precisa permitir o acesso a sua localização para ver a previsão na sua região.',
+      {
+        persist: true,
+        key: 'location-denied',
+        preventDuplicate: true,
+        variant: 'error',
+      }
+    );
+    getLocation();
+  };
+
   useEffect(() => {
     if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position: GeolocationPosition) => {
-          setCoords({
-            lat: position.coords.latitude,
-            lon: position.coords.longitude,
-          });
-          mutateWeather();
-          mutateCity();
-        }
-      );
+      getLocation();
     }
   }, []);
 
@@ -70,6 +92,7 @@ const MyCity = ({ oneCallInitialData, initialCity }: MyCityProps) => {
       justify="center"
       className={classes.root}
       spacing={5}
+      data-tour="step4"
     >
       <Grid
         container
@@ -118,11 +141,15 @@ const MyCity = ({ oneCallInitialData, initialCity }: MyCityProps) => {
         className={classes.zindex}
       >
         <Typography variant="h2">
-          {weatherLoading ? <Skeleton /> : `${weatherData?.current.temp} °C`}
+          {weatherLoading ? (
+            <Skeleton width={200} />
+          ) : (
+            `${weatherData?.current.temp} °C`
+          )}
         </Typography>
         <Typography>
           {cityLoading ? (
-            <Skeleton />
+            <Skeleton width={150} />
           ) : (
             `${cityData?.name}, ${cityData?.country}`
           )}
@@ -139,7 +166,7 @@ const MyCity = ({ oneCallInitialData, initialCity }: MyCityProps) => {
         <Grid item lg={5}>
           <Typography align="center">
             {weatherLoading ? (
-              <Skeleton width={100} />
+              <Skeleton />
             ) : (
               `Sensação de ${weatherData?.current.feels_like} °C`
             )}
